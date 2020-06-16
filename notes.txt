@@ -1,1 +1,41 @@
-Hello buddy!
+Documentation:
+
+Creating a react app:
+    npm init react-app myapp
+    This will create the app enviroment for me, next I will have to navigate to it
+        in the terminal.
+
+    ***[I notice an error keep popping up when doing this "Unexpected end of JSON input while parsing near '...nt-webpack-plugin":"0'"
+    I googled the solution to this and it goes as follows {npm cache clean --force}. I don't know why it works but it works...]***
+
+
+
+Git Notes:
+    If you already have a project prepared you have to ensure a few things.
+        1.It is using a package manager npm. You can do this by running {npm init}
+        2.Git also have to be on it as well. You can do this by running {git init}
+            a.Make sure that you add the "node_modules" folder is added to {.gitignore}
+                (Just add the folder name within the file.)
+            b.If you don't have a .gitignore, you can create one within Visual Studio Code. 
+                (Just create a file and name it {.gitignore})
+
+    Once you've ensured that these are present and functioning you can move on.
+
+    Next you have to create a git respository on your git account.
+
+    Once that is complete:
+        
+        
+        //Follow the rest of these instructions//
+        https://kbroman.org/github_tutorial/pages/init.html
+
+
+
+
+DNS Setup
+    Once I bought the domain name from a DNS provider, they will give you DNS
+        records for that domain name. My DNS provider is godaddy.
+    I then headed over to netlify and added a domain name to my site. I copied
+        their link they gave me for the site and added it to my DNS records @godaddy.
+        "CNAME www @" to "CNAME www blah-blah-blah.netlify.app"
+    The time frame for this is usually 24 hours but it went up in 5mins for me.
