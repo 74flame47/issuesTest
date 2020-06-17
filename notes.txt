@@ -18,6 +18,8 @@ Git Notes:
                 (Just add the folder name within the file.)
             b.If you don't have a .gitignore, you can create one within Visual Studio Code. 
                 (Just create a file and name it {.gitignore})
+                infor here => https://help.github.com/en/github/using-git/ignoring-files
+                =>https://gist.github.com/octocat/9257657
 
     Once you've ensured that these are present and functioning you can move on.
 
@@ -39,3 +41,127 @@ DNS Setup
         their link they gave me for the site and added it to my DNS records @godaddy.
         "CNAME www @" to "CNAME www blah-blah-blah.netlify.app"
     The time frame for this is usually 24 hours but it went up in 5mins for me.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    To use NODE:
+    1. Install it from the browser.
+    2. Navigate to the project folder in the terminal.
+    3. Run node by typing {node} in the terminal.
+        This will allow you to run javascript files using the terminal.
+    4. To run a script file, ensure that the terminal is in the location of
+        the server.js, then inside of the terminal type {node filename.js}
+
+
+
+Install package.json by { npm init}
+
+
+
+
+How to install nodemon:
+    1. {npm install nodemon --save-dev}  This will save nodemon as a developer dependecy.
+        Meaning, that when it's time to build the app, nodemon wont be considered as a 
+        dependecy and be added into the package.
+        Also, you need to add nodemon to the scripts "start". So it will look like this:
+
+            "start": "nodemon servername.js"
+        
+        Nodemon allows the server to stay active listening to requets.
+        
+
+
+
+
+
+NODE INSTALLATION & USAGE
+
+How to install express:
+    1. {npm install express}   This automaticly will be consider as a devdependency.
+
+
+
+EXPRESS SERVER
+
+1.The first thing you do when creating a server is to create an express var and store the 
+require function targeting express.
+
+    const express = require('express');
+
+2.Next, you have to create var "app" and call the express var you just made.
+
+    const app = express();
+
+3.Lastly, you have to call the app function now and assign a listerner to it for the 
+port you want node to listen to for requests.
+
+
+Because you have this server now, you have to create some logic for the server telling it what
+to do. So what will happen is the Browser will send requests to the server using the url.
+The server will see the url and if that link is on the root directory, then you can define 
+specific logic that happens only on that page. The server then RESPONDS with sending code 
+or files back to the browser.
+
+You can use:
+.get()
+.post()
+.delete()
+
+
+app.get('/', (req, res) => {
+    res.send("<h1>This can be html code or reqular text.</h1>");
+})
+
+The above code is broken down as follows:
+
+    app.get()- is a function that handles the communication request if the conditions are right.
+    The first argument '/', is used to determine where the request is coming from on the site.
+        '/' means that it is coming off the root directory. If it were something like this 
+        '/profile', then the request would have come from the profile page or to the profile page.
+
+    (req, res)- These are the perameters of the following arrow function. It receives 2 inputs,
+    res, aka request and res, aka response. These are used to represent the request and response
+    syntax.
+    Within the {} you write the desired code. First you start with whether it will be a reques or
+    a response, next you access it's member opporator and send something back or receive something.
+
+When sending back to the browser, you can either send javascript objects or regular html.
+
+
+
+Lastly you need to add a port listener so that the server will know what port to pay attention too
+    
+    app.listen(3001);
+
+
+
+
+
+
+
+INSTALLING EXPRESS ON UBUNTU SERVER
+    https://www.vultr.com/docs/installing-node-js-and-express
+    
+
+    When I first did this I got an error, and that was because even tho I did what they asked of me,
+    the installer didn't add node_modules...so to fix this, I navigated inside my server folder and 
+    {npm install}. This added the node_modules folder and dependencies I needed.
+    https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
+
+
+
+
+
+
