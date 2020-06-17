@@ -5,13 +5,18 @@
 
 
 #cslogo{
-    width:400px;
+    max-width:400px;
+    width: 100%;
     display: block;
-    margin: 0 auto;
+    margin: -200px 0 0 -142.1px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px #cccccc solid;
 }
 
 .border{
     width:100%;
-    height:15vh;
+    height:12.5vh;
     background-color: #000000;
 }
