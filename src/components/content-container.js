@@ -29,7 +29,7 @@ const ContentContainer = () => {
 
     const updateWindowWH = (w,h) => {
         
-        setW([0,0]);
+        //setW([0,0]);
         return console.log(`The new dimentions are ${w}x${h}`);
 
         
