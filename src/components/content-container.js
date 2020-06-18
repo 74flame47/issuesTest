@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ShowWindowDimensions from './resizeWindow';
 import Logo from '../images/logo-original.png';
 
