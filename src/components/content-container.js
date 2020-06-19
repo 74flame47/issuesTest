@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 //import ShowWindowDimensions from './resizeWindow';
-import Logo from '../images/logo-original.png';
+import Logo from '../images/1sample.gif';
 
 import '../css/content-container.css'
 
