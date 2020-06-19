@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 
 
 
@@ -20,11 +20,11 @@ function useWindowSize() {
 const ShowWindowDimensions = ({ updateWindowWH }) => {
   const [width, height] = useWindowSize();
 
-
-    updateWindowWH("644", "yO YO YO");
-
+  useEffect(() => {
+    updateWindowWH(width, height)
+    console.log("Hello")
+  });
   
-  console.log(width)
   return <h1>Window size: {width} x {height}</h1>;
 }
 

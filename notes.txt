@@ -165,3 +165,26 @@ INSTALLING EXPRESS ON UBUNTU SERVER
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ok what's happening?
+    I wanted the logo to be size according to the screen size. It's in, so when the component loads, I want it to:
+    Identify the screen size and determine the size of the.....it doen't matter, why 
+        because if the logo loads on a screen, then that's the screen that it will be used on.
+        So I just need a useEffect so that the size of the logo will be dictated by the size.
