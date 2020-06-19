@@ -32,7 +32,7 @@ const ContentContainer = () => {
         let logoW = document.getElementById("cslogo").clientWidth; 
         console.log(`-${logoH /2}px 0 0 -${logoW /2}px`);
     
-        logoMarginSet(`-15vh 0 0 -${logoW /2}px`);
+        logoMarginSet(`-14vh 0 0 -${logoW /2}px`);
     }, [])
 
 
