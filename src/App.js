@@ -9,9 +9,9 @@ import './css/main.css';
 const App = () => {
   return (
     <div className="App">
-      <div className="border" style={{position: "fixed", top: "0px"}}></div>
+      <div className="border"></div>
       <ContentContainer />
-      <div className="border" style={{position: "fixed", bottom: "0px"}}></div>
+      <div className="border"></div>
     </div>
   );
 }

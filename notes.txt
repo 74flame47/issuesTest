@@ -179,12 +179,12 @@ INSTALLING EXPRESS ON UBUNTU SERVER
 
 
 
+Favicon Icons Update:
+    Inside the public folder is where your favicon located within the react folder.
+    To replace it, you will need to convert your image to a favicon through https://favicon.io/favicon-converter/.
+    Then rename the icon files to replace the ones that's already within the public folder if you are using 
+        create react app.
+    Then that's it, upload your site and refresh the page.
 
 
-
-
-Ok what's happening?
-    I wanted the logo to be size according to the screen size. It's in, so when the component loads, I want it to:
-    Identify the screen size and determine the size of the.....it doen't matter, why 
-        because if the logo loads on a screen, then that's the screen that it will be used on.
-        So I just need a useEffect so that the size of the logo will be dictated by the size.
+    

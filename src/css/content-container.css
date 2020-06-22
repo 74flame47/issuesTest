@@ -1,7 +1,8 @@
 #contentcontainer{
     width: 100vw;
-    height: 100vh;
+    height: 75vh;
     margin: 0;
-    padding: 12.5vh 0;
+    padding: 0;
+    position: relative;
     box-sizing: border-box;
 }

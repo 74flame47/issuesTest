@@ -52,7 +52,8 @@ const ContentContainer = () => {
 
 
     return( <div id="contentcontainer">
-                <img src={Logo} alt="logo" id="cslogo" style={{margin:  logoMargin}}/>   
+                <img src={Logo} alt="logo" id="cslogo" style={{margin:  logoMargin}}/>
+                <h4 className="title-Header">Coming Soon</h4>  
             </div>)
 }
 
