@@ -161,6 +161,92 @@ INSTALLING EXPRESS ON UBUNTU SERVER
     https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js
 
 
+Below is how you will install users on your server.
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04
+
+
+
+
+
+Here's the link for catching errors for promises:
+https://thecodebarbarian.com/unhandled-promise-rejections-in-node.js.html
+
+
+
+
+
+
+
+CONNECTING TO THE SERVER:
+    You need to open up the putty software. This will connect you to the server.
+        -Once open, add the IP Address of the server within the ip input then press "open"
+        If you need this information, just go to your server on vultr and get the information.
+        -This will open up the putty terminal, here you will be prompted to add in the user and
+        password. Just get this information from the server as well. When inputing the password,
+        it will be hidden, once you copy the password, right click within the terminal and 
+        the password will be added.
+        -Next type "dir" to show where you are within the terminal, then navigate into the "portfolio_server"
+        folder using "cd portfolio_server"
+        -Within the "portfolio_server" type "npm start". This will start the server within the terminal.
+        Now the server is active to listen to the requests that are coming in.
+
+    If you try to access the server without it running, then the server will not respond.
+
+
+
+
+    My concern is how do I leave the server running...
+    Here's something the maybe can help... https://coderrocketfuel.com/article/deploy-a-node-js-application-to-a-vultr-server-with-https
+
+    I found a better alternative:
+        https://www.howtogeek.com/howto/ubuntu/keep-your-ssh-session-running-when-you-disconnect/
+        After installing it on my server it gave me some errors that I appearently have to manually fix.
+        Here's the link: https://gonpm.me/audit-guide
+
+        To use screen, within the profile_server folder you can just type in the commands with out the server running.
+        https://www.howtogeek.com/howto/ubuntu/keep-your-ssh-session-running-when-you-disconnect/
+
+
+
+
+NOT ONLY THAT BUT I FOUND A NEW WAY TO CONNECT TO THE SERVER THROUGH SSH WITHOUT USING PUTTY!
+    I downloaded the Visual Studio Code extention "Remote - SSH"
+    Once installed, click on the button to the bottom left of the Visual Studio Code window...it's usually colored.
+    This will open a new window showing you all the servers you are currently connected to. Click on the "+" icon in
+        the tab and add in the user for the server and the ip address: ssh root@149.28.97.79 -A
+    The next input will be the password for the server.
+    Then select where the project files where you server is located, then boom you are in!
+
+    Here's the refference:
+    https://www.youtube.com/watch?v=7kum46SFIaY&t=110s
+    https://www.youtube.com/watch?v=QW70p8lLE4A
+    
+    The offical link
+    https://code.visualstudio.com/docs/remote/ssh#_getting-started
+    
+    This link is for you when you want to develop more security for the connection:
+    https://code.visualstudio.com/docs/remote/troubleshooting#_configuring-key-based-authentication
+    
+
+
+If you already set this up before:
+    Press F1
+    type "Remote-SSH: Connect to host..."
+    Here you can enter your user name for access to the server, and add the server ip address.
+        eg: username@serverIP
+    Then add the password of that server.
+    Next follow the prompts...sorry :)
+
+
+
+
+
+
+
+
+
+
+Why the server have to run on a port and how to get it to run without one:
 
 
 
@@ -174,6 +260,120 @@ INSTALLING EXPRESS ON UBUNTU SERVER
 
 
 
+DNS Transfer using godaddy and vultr:
+    I currently purchased a domain name from Godaddy, and I have a server running on vultr.
+    As it stands Godaddy is managing the domain name for me, but what I want to do is transfer it to vultr DNS.
+    To do this you have to copy the name server information from vultr and add it into the name server for godaddy.
+    You will have to go to the advance options after you've click the  edit button for the name server.
+    Just in case, I keep a copy of the information just incase, so I can revert if need be.
+
+    Here is the information for the name server for vultr
+    https://www.vultr.com/docs/introduction-to-vultr-dns
+
+    https://www.youtube.com/watch?v=Nr9bGEAVaCU
+
+    Next you will have to connect the domain to the server.
+        You can do this by going to your product page in the vultr website.
+        Open up the DNS link
+        Click on the add domain button
+        Add in the domain name and the server ip address you want to connect it to.
+        {This will take up to a day so you have to wait for it to be done.}
+
+
+
+
+
+Why the server have to run on a port and how to get it to run without one:
+https://stackoverflow.com/questions/59705312/http-server-to-access-the-application-without-port
+
+By default, the browser runs on port 80, for http. For https, it's port 443. So just add app.listen(80) for 
+https and app.listen(443).
+So conclusion, just listen to the default port.
+
+
+How to set up the certbot & Encrypt for Express:
+https://flaviocopes.com/express-letsencrypt-ssl/
+https://itnext.io/node-express-letsencrypt-generate-a-free-ssl-certificate-and-run-an-https-server-in-5-minutes-a730fbe528ca
+
+
+
+
+I'm running into DNS errors, so now I'm going to see if I can just display the site from my server.
+https://techwombat.com/how-to-point-domain-name-to-vultr-vps/
+
+Here's my soloution, why don't I just serve the site files directly to the server. So the server will give me the files for 
+the site.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    POSTGRESQL//////////////////////////////////////////////////
+
+        Install Postgresql on Unbuntu server:
+        https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04
+
+
+
+
+
+        In the terminal, type : sudo -i -u postgres 
+        Next type in : psql 
+        Now you are connected to the database
+
+        CREATE DATABASE desiredname;
+        DROP DATABASE [IF EXISTS] database_name;
+
+
+        \q => quit
+        \l => Shows the database
+        \c => database name
+        \d => list of tables within the current database
+
+        ctl + d => This quits the postgres command line, taking you to the root.
+
+
+        Here is the link:
+        https://phoenixnap.com/kb/how-to-connect-postgresql-database-command-line
+
+
+
+
+        Postgress Connection error:
+        https://www.liquidweb.com/kb/what-is-the-default-password-for-postgresql/
+        https://www.liquidweb.com/kb/change-a-password-for-postgresql-on-linux-via-command-line/
+        http://knexjs.org/#knexfile => Go to Migrations section to knexfile.js
+
+        The issue was that I was trying to make a connection with out having the user defined and password.
+        Because there was no password for postgres user, I had to add one. Once I added it, it worked!!!
 
 
 
@@ -187,4 +387,44 @@ Favicon Icons Update:
     Then that's it, upload your site and refresh the page.
 
 
-    
+
+
+
+
+Here's a DATEFORMAT library:
+
+npm install dateformat
+Then write your requirement:
+
+var dateFormat = require('dateformat');
+Then bind the value:
+
+var day=dateFormat(new Date(), "yyyy-mm-dd h:MM:ss");
+
+https://github.com/felixge/node-dateformat
+
+
+
+
+
+
+
+
+
+
+
+How to have your server host your react project:
+    +Run "npm run build" for your react app
+    +copy the files out of the build folder and paste them inside of the 
+        public folder of your server. Becareful what you change because
+        the links are sensitive according to the structure of the build folder.
+
+
+
+
+
+
+
+
+How to add images to the website:
+https://www.youtube.com/watch?v=Rw_QeJLnCK4&t=1543s

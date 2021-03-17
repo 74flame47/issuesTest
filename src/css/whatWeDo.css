@@ -1,0 +1,32 @@
+.whatWeDo-title{
+    font-size:46px;
+    font-weight: 500;
+    text-align: left;
+    color:#228d91;
+    margin: 0 0 20px 0;
+    padding: 30px 0 0 0;
+    line-height: 40px;
+}
+
+.whatWeDo-copy-container{
+    padding-left: 40px;
+    text-align: left;
+}
+
+
+.skill-box{
+    width: 130px;
+    margin: 4px;
+    height: 90px;
+    border-radius: 6px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+
+.skill-box:hover{
+    background-color: #228d91;
+    color: #ffffff;
+    
+}

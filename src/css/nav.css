@@ -1,0 +1,26 @@
+.navLink {
+    position: absolute;
+    bottom: 1px;
+    right: 40px;
+    z-index: 110;
+    list-style-type: none;
+    font-family: 'Poppins';
+  }
+
+  .navLink li{
+    display: inline-block;
+    margin: 0 7px;
+    
+  }
+
+  .navLink li a{
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .navLink li a:hover{
+    text-decoration: none;
+    color: #228d91;
+  }
+
+  

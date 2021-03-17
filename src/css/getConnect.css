@@ -1,0 +1,84 @@
+#getConnect-container{
+    max-width:500px;
+    min-height: 300px;
+    margin: 0vh auto 0 auto;
+    background-color: rgba(255,255,255, .5);
+    padding: 10px;
+}
+
+#getConnect-container h1{
+    font-family: 'Poppins Bold';
+    font-size: 70px;
+    font-weight: 900;
+    color: #1e1e1e;
+    margin: 40px 0 -10px 0;
+    line-height: 70px;
+    
+}
+
+#getConnect-container p{
+    margin: 10px 0 47px 0;
+}
+
+
+.input-email{
+    width: 100%;
+    font-size: 17px;
+    border-radius: 3px;
+    border: 1.5px solid #868686;
+    margin: 10px 0;
+    display: block;
+    outline: none;
+}
+
+
+.input-firstName{
+    width: 49%;
+    margin:0 0 10px 0;
+    float: left;
+    font-size: 17px;
+    border-radius: 3px;
+    border: 1.5px solid #868686;
+    outline: none;
+}
+
+.input-lastName{
+    width: 49%;
+    margin:0 0 10px 0;
+    float: right;
+    font-size: 17px;
+    border-radius: 3px;
+    border: 1.5px solid #868686;
+    outline: none;
+}
+
+.input-message{
+    width: 100%;
+    min-height: 200px;
+    font-size: 17px;
+    margin: 0 auto;
+    display: block;
+    resize: none;
+    outline: none;
+}
+
+
+
+.emailImg{
+    position: fixed;
+    right: 1%;
+    top: 10px;
+    z-index: -10;
+    width: 600px;
+
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+/*//.portfolio-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 10px;
+}*/
+
+
+.portfolio-container-title{
+    font-family: "Poppins Bold";
+    font-size: 30px;
+    font-weight: 900;
+    margin-top: 150px;
+    color: #1e1e1e;
+}
+
+
