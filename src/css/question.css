@@ -1,0 +1,43 @@
+.question-container{
+    min-height: 65px;
+    max-height: 650px;
+    margin: 30px auto 10px auto;
+    /* border: 1px solid #ecb110; */
+}
+
+.question-container h3{
+    font-family: "Poppins Light";
+    font-size: 14.5px;
+    margin: 0 0 15px 0;
+}
+
+
+.select-container{
+    width: 20%;
+    height:40px;
+    margin:0;
+    padding:0;
+    /* border: 1px solid #10ec35; */
+    display: inline-block;
+}
+
+
+.selector-btn{
+    width: 15px;
+    height: 15px;
+    margin: 0 auto 5px auto;
+    border-radius: 20px;
+    /* border: 5px solid #ae10ec; */
+    background-color: #ffffff;
+}
+
+.selector-btn:hover{
+    cursor: pointer;
+}
+
+
+.selector-text{
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+}
