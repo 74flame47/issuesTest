@@ -45,12 +45,54 @@ Actually, I need to create a concept design of everything.]
 
 
 
+TO DOS:
+
+    What's needed?
+        +I need to create a reset function that resets everything when I submit the results.
+            How do I reload the component?
+            I need to move the array with the map code to a new component and load that in, then 
+            change the array that I send to it. The array will reflect the state, and when the statechanges,
+            the component will update too.
+            Yeaaaahhhhh this should work.
+            So I didn't do that but I fixed the code and left the notes in the code
+
+            I need to conned it to the state, then make changes to the state.
+        +I need to conditionally render the tiles to start the test along with the results.
+        -What is the style I am going with for the results?
+        -I need a starting tile and I want to show different images when the results are in.
 
 
 
 
+count is 1-4 which is the questions positions
+
+I am currently pushing new answers into the answer's array but not as an
+tile answer array but as the answer itself.
+The last tile needs a completed array that it can send and replace...
+what needs to happen?
+
+if there are 3 questions
+check to see if any questions have a null
+If they do, then do nothing
+if they don't, then send answers array for the last tile.
 
 
+What's happening
+I need make changes to the tile answers when a question is clicked.
+How is changes made to the tile's answers?
+changeValue is called when question is clicked and if it's the last
+tile. This changes the value of the question in it's position.
+
+
+So I need to send an array of all the values when all the answers 
+doesn't have a null.
+What function does this?
+sendAnswers!
+
+sendAnswers suppose to send the final result.
+So the problem is with send answers....
+what is it doing?
+When is it triggered?
 
 
 

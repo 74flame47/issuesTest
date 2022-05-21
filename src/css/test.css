@@ -56,3 +56,12 @@
     opacity: .7;
     z-index: 0;
 }
+
+
+.tile-progress-bar{
+    /* width: 100%; */
+    height:5px;
+    background-color: #ae10ec;
+    position: absolute;
+    bottom: 4px;
+}

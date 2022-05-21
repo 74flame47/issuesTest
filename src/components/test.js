@@ -43,7 +43,7 @@ const Test = () => {
                             total: 0,
                         }]
                                                     
-
+    const [newDatabase0, setNewDatabase0] = useState([])
     let newDatabase = []
 
 
@@ -171,16 +171,34 @@ const Test = () => {
                console.log(`Trust is the greatest with ${trust}`)
                console.log(`Abandonment is  ${abandonment}`)
                console.log(`Rejection is ${rejection}`)
+
+
+               await setTestResults({
+                                    resultsIn: true,
+                                    category: "trust",    
+                                    })
            }else{
                if (abandonment > rejection){
                    console.log(`Abandonment is the greatest with ${abandonment}`)
                    console.log(`Trust is  ${trust}`)
                    console.log(`Rejection is ${rejection}`)
+
+
+                   await setTestResults({
+                                        resultsIn: true,
+                                        category: "abandonment",    
+                                        })
                    
                }else{
                    console.log(`Rejection is the greatest with ${rejection}`)
                    console.log(`Trust is  ${trust}`)
                    console.log(`Abandonment is  ${abandonment}`)
+
+                   await setTestResults({
+                                        resultsIn: true,
+                                        category: "rejection",    
+                                        })
+
                }
            }
         }else{
@@ -188,42 +206,69 @@ const Test = () => {
                console.log(`Rejection is the greatest with ${rejection}`)
                console.log(`Trust is  ${trust}`)
                 console.log(`Abandonment is  ${abandonment}`)
+
+                await setTestResults({
+                                        resultsIn: true,
+                                        category: "rejection",    
+                                        })
+
+
             }else{
                if(abandonment > rejection){
                    console.log(`Abandonment is the greatest with ${abandonment}`)
                    console.log(`Trust is  ${trust}`)
                    console.log(`Rejection is ${rejection}`)
+                   
+
+                   await setTestResults({
+                    resultsIn: true,
+                    category: "abandonment",    
+                    })
                }
                else{
                    console.log(`Rejection is the greatest with ${rejection}`)
                    console.log(`Trust is  ${trust}`)
                    console.log(`Abandonment is  ${abandonment}`)
+
+                   
+
+                   await setTestResults({
+                    resultsIn: true,
+                    category: "rejection",    
+                    })
                }
             }
            
         }
 
-        
+        await setTestPosition(0);
+        await setTestStart(false)
+        // await randomDatabase();
+        // await divideTiles()
             
     }
 
 
 
-    const randomDatabase = () => {
+    const randomDatabase = async () => {
 
-        let sampleDatabase = database;
+        let sampleDatabase = [...database];
 
         //I have to make this smaller.
 
         for (let i = sampleDatabase.length; i > 0; i--){
             let ranNum = Math.floor(Math.random() * i);
-            console.log(`${i} and the random number is ${ranNum}`)
+            // console.log(`${i} and the random number is ${ranNum}`)
 
             
-
+            //This the code here I have to change to effect the state.
             newDatabase.push(sampleDatabase[ranNum])
             sampleDatabase.splice(ranNum,1)
+            // console.log(`The loop ran ${i}`)
         }
+
+        await setNewDatabase0(newDatabase)
+
     }
 
 
@@ -263,20 +308,32 @@ const Test = () => {
 
 
 
+//DivideTiles only pushes the state, it doesn't replaces them, I need code that replaces the TileCount.
 
+/*
+    How do I determine when to delete the previous tile state?
+*/
 
     const divideTiles = async () => {
         // console.log(newDatabase.length)
 
         //This is how to find out how many tiles are needed.
         let tileCount = newDatabase.length / 4;
-        let lastTilesState = [...tilesCount];
-        await console.log(lastTilesState)
+        // let lastTilesState = [...tilesCount];
+        let lastTilesState = [];
+        //Why do I need this?
+        //This saves the last state but I don't need to save the last state.
+        //How am I using this?
+        // await console.log(lastTilesState)
+        /*Wow, that fixed it, that one line of code fixed it...amazing. That had me intimidated for the past couple days
+        but I fixed it within 5 mins...incredible*/
+
+        
 
         let leftOverQuestions = newDatabase.length % 4;
 
         console.log(leftOverQuestions)
-        console.log(" Is the questions has a remainder" + tileCount)
+        console.log(" Do the questions have a remainder " + tileCount)
 
         if(tileCount % 1 === 0){
             console.log("There is no decimal")
@@ -362,6 +419,7 @@ const Test = () => {
         */
             
            await setTilesCount(lastTilesState)
+        //    await console.log(newDatabase)
     }
 
 
@@ -380,12 +438,13 @@ const Test = () => {
     },[])
 
 
-    const tilesRender = tilesCount.map((tile, i) =>{
+    let tilesRender = tilesCount.map((tile, i) =>{
         //i starts from 0 so I subtracted 1 from the tilesCount because .length don't include 0
 
         let lastTile = tilesCount.length - 1;
 
-        return <QuestionHolder  questions={tile}
+        return <QuestionHolder  key={i}
+                                questions={tile}
                                 testPosition={testPosition}
                                 tilePosition={i}
                                 changeTestPosition={changeTestPosition}
@@ -393,6 +452,23 @@ const Test = () => {
                                 lastTile={lastTile === i? true: false}
                                 getResults={getResults}/>
     })
+
+    const testToggle = async() =>{
+
+        await setTestStart(!testStart);
+        await setAnswers([]);
+
+        if(testStart){
+            await randomDatabase()
+            await divideTiles()
+            await setTestResults({
+                resultsIn: false,
+                category: null,    
+                })
+        }
+        
+        
+    }
 
 
 
@@ -409,7 +485,9 @@ const Test = () => {
 
 
 
-
+    let progressTotal = 100 / tilesCount.length;
+    let currentProgress = testPosition * progressTotal;
+    let liveProgress = currentProgress + progressTotal;
 
 
 
@@ -417,10 +495,42 @@ const Test = () => {
 
     return(
             <div className="test-container">
-                 <button onClick={()=>{setTestStart(!testStart)}} style={{position:"fixed",
+                 <button onClick={testToggle} style={{position:"fixed",
                                                         zIndex:"20",
                                                         left:"30%",
                                                         top:"0"}}>{testStart ? "End":"Start"} test</button>
+
+
+
+
+                <button onClick={()=>{
+                            console.log(answers)
+                        }} style={{position:"fixed",
+                                    zIndex:"20",
+                                    left:"10%",
+                                    top:"0"}}>current answers</button>
+
+
+
+
+                <button onClick={randomDatabase} style={{position:"fixed",
+                                    zIndex:"20",
+                                    left:"20%",
+                                    top:"150px"}}>Randomize database</button>
+
+
+
+
+                        <button onClick={()=>{
+                            console.log(`Total tiles is ${tilesCount.length}`)
+                            console.log(`This is the tile progress value ${progressTotal}`)
+                            console.log(`The current progress is ${currentProgress}`)
+                            console.log(`The current progress is ${liveProgress}`)
+                        }} style={{position:"fixed",
+                                    zIndex:"20",
+                                    left:"30%",
+                                    top:"100px"}}>Show test progress</button>
+
                 {testStart? <div>
                     <div className="test-header-container">
                         <h1>Personality Test</h1>
@@ -430,7 +540,9 @@ const Test = () => {
                         {tilesCount.length === 0? null:tilesRender}
                     </div>
                 </div>: <div>
-                            <h1>Start the test here</h1>
+                            {testResults.resultsIn?<div>
+                                <h1>{testResults.category}</h1>
+                            </div>:<h1>Start the test here</h1>}
                            
                         </div>}
                 
@@ -438,6 +550,7 @@ const Test = () => {
                 <img className='tile-hard-light' src={TileHardLight} alt="lightBG" />
                 <div className="tile-hard-rim-light"></div>
                 <img className='tile-soft-lightBG' src={TileLightBG} alt="lightBG" />
+                {testStart?<div className="tile-progress-bar" style={{width:`${liveProgress}%`}}></div>:null}
             </div>
         )
 }
@@ -445,7 +558,7 @@ const Test = () => {
 export default Test;
 
 
-
+//
 
 /*
 

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import "../css/question.css";
 
-const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCount}) => {
+const Question = ({question, count, changeValue,lastquestion,checkAnswers,sendAnswers,questionCount}) => {
 
     const [no, setNo] = useState(false);
     const [notReally, setNotReally] = useState(false);
@@ -42,7 +42,7 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
 
 
     const noSelector = async () => {
-        if(lastTile){
+        if(lastquestion){
             await setNo(true);
             await setNotReally(false);
             await setNetural(false);
@@ -51,9 +51,10 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
 
             await changeValue(count,{value:questionsValue[0],
                                     category:question.category})
-            
-
             await checkAnswers();
+            await sendAnswers(count,{value:questionsValue[0],
+                                     category:question.category})
+            // await resetQuestions()
         }
         else{
             await setNo(true);
@@ -73,7 +74,7 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
 
 
     const notReallySelector = async () => {
-        if(lastTile){
+        if(lastquestion){
             setNo(false);
             setNotReally(true);
             setNetural(false);
@@ -83,10 +84,9 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
             await changeValue(count,{value:questionsValue[1],
                 category:question.category})
                 
-                
-
-
-            await checkAnswers();
+                await checkAnswers();
+            await sendAnswers(count,{value:questionsValue[1],
+                category:question.category})
         }else{
             setNo(false);
             setNotReally(true);
@@ -105,7 +105,7 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
 
 
     const neturalSelector = async () => {
-        if(lastTile){
+        if(lastquestion){
             setNo(false);
             setNotReally(false);
             setNetural(true);
@@ -115,10 +115,9 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
             await changeValue(count,{value:questionsValue[2],
                 category:question.category})
                 
-            
-
-            
             await checkAnswers();
+            await sendAnswers(count,{value:questionsValue[2],
+                category:question.category})
         }else{
             setNo(false);
             setNotReally(false);
@@ -139,7 +138,7 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
 
 
     const maybeSelector = async () => {
-        if(lastTile){
+        if(lastquestion){
             setNo(false);
             setNotReally(false);
             setNetural(false);
@@ -149,10 +148,9 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
             await changeValue(count,{value:questionsValue[3],
                                     category:question.category})
                                     
-            
-
-            
             await checkAnswers();
+            await sendAnswers(count,{value:questionsValue[3],
+                category:question.category})
         }else{
             setNo(false);
             setNotReally(false);
@@ -176,7 +174,7 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
 
     
     const yesSelector = async () => {
-        if(lastTile){
+        if(lastquestion){
             setNo(false);
             setNotReally(false);
             setNetural(false);
@@ -186,10 +184,9 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
             await changeValue(count,{value:questionsValue[4],
                                     category:question.category})
                                     
-            
-
-
             await checkAnswers();
+            await sendAnswers(count,{value:questionsValue[4],
+                category:question.category})
         }else{
             setNo(false);
             setNotReally(false);
@@ -221,7 +218,7 @@ const Question = ({question, count, changeValue,lastTile,checkAnswers,questionCo
 
 
     return(
-            <div className="question-container" onClick={()=>{console.log(`Last Tile in the database? ${lastTile}`)}}>
+            <div className="question-container" onClick={()=>{console.log(`Last question in the database? ${lastquestion}`)}}>
                 <h3>{questionCount}. {question.q}</h3>
                 <div className="select-container">
                     <div className="selector-btn"

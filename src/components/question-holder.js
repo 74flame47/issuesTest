@@ -9,7 +9,7 @@ import TileHardLight from "../images/hard-light.png"
 
 
 
-const QuestionHolder = ({questions,testPosition,tilePosition,changeTestPosition,getAnswers,lastTile,getResults}) => {
+const QuestionHolder = ({questions,testPosition,tilePosition,changeTestPosition,getAnswers,lastTile,getResults,reSet}) => {
 
     const [q1, setQ1] = useState(null);
     const [q2, setQ2] = useState(null);
@@ -23,30 +23,40 @@ const QuestionHolder = ({questions,testPosition,tilePosition,changeTestPosition,
         If next is false all the questions does not have valid values.
     */
 
-        const changeValue = async(count,input) => {
-            // await setNext(true)
-    
-            /*
-                This is the issues now, because the count isn't 123or 4 anymore but it
-                has all the numbers.
-            */
-            
-            switch(count){
-                case 1:
-                    await setQ1(input);
-                break;
-                case 2:
-                    await setQ2(input);
-                break;
-                case 3:
-                    await setQ3(input);
-                break;
-                default:
-                    await setQ4(input);
-                    await setNext(true)
-            }
-            
-         }
+    const changeValue = async(count,input) => {
+        // await setNext(true)
+
+        /*
+            This is the issues now, because the count isn't 123or 4 anymore but it
+            has all the numbers.
+        */
+        
+        switch(count){
+            case 1:
+                await setQ1(input);
+            break;
+            case 2:
+                await setQ2(input);
+            break;
+            case 3:
+                await setQ3(input);
+            break;
+            default:
+                await setQ4(input);
+                await setNext(true)
+        }
+        
+        }
+
+
+        const resetQuestionsAnswers = async()=>{
+            await setQ1(null)
+            await setQ2(null)
+            await setQ3(null)
+            await setQ4(null)
+        }
+
+
 
 
     const swapQuestions = async () => {
@@ -57,11 +67,15 @@ const QuestionHolder = ({questions,testPosition,tilePosition,changeTestPosition,
             await changeTestPosition(testPosition + 1)
             await setNext(false)
             await sendAnswers()
+            await resetQuestionsAnswers()
         }
         
     }
 
     const sendAnswers = async(count, input) => {
+
+        //The below switch statement isn't nessary...I could just send an array where I need it.
+        //  It's ok tho, I didn't know.
 
             switch(count){
                 case 1:
@@ -89,27 +103,127 @@ const QuestionHolder = ({questions,testPosition,tilePosition,changeTestPosition,
     }
 
 
+
+
+
+
+
+
     /*
         What's my current issue?
         The answers are nulls when only some suppose to be.
     */
 
 
-
+/*
+I want to write a conditional statement that allows the results to pop up once all the questions are answered.
+questions is an array, so I can use it's length.*/
 
 
 
 
 
     const checkAnswers = async () => {
-        if(q1 !== null && q2 !== null && q3 !== null && q4 !== null ){
-            console.log("there are values")
-            await swapQuestions();
-        }else{
-            console.log("nothing yet")
+
+
+        switch(questions.length){
+            case 1:
+                await resultsBtnToggle()
+                console.log(`Questions length is 1 => ${questions.length}`)
+                await getAnswers([q1])
+                await console.log([q1])
+                
+
+            break;
+
+
+            case 2:
+                if(q1 !== null && q2 !== null){
+                    await resultsBtnToggle()
+                    await getAnswers([q1,q2])
+                    await console.log([q1,q2])
+                    
+                }
+                console.log(`Questions length is 2 => ${questions.length}`)
+
+            break;
+
+
+            case 3:
+                if(q1 !== null && q2 !== null && q3 !== null){
+                    await resultsBtnToggle()
+                    await getAnswers([q1,q2,q3])
+                    await console.log([q1,q2,q3])
+                    
+                }
+                console.log(`Questions length is 3 => ${questions.length}`)
+            
+            break;
+
+
+            default :
+                console.log(`Questions length is 4 by default => ${questions.length}`)
+                if(q1 !== null && q2 !== null && q3 !== null && q4 !== null ){
+                    console.log("there are values")
+                    await swapQuestions();
+                }
+                else{
+                    console.log("nothing yet")
+                }
         }
+
+
+
+
+
+        //I need to change this into a switch statement.
+        
     }
-    
+    //Isn't this effecting all the questions?
+
+    /*
+        I need to create a switch statement that checks if the questions.length, depending on what count it has, code
+        will run according to that.
+        I want to run that switch statement on every question, so when ever a question is answered, it will trigger the 
+        switch.
+        I could do this but I rather just stick to the button and just use that code for the results btn.
+
+        The last tile's trigger event is when the last question is clicked, even if the other questions arent clicked.
+        This is a problem. I want this to run only if all the other values for the question is in.
+
+        What are the conditions it will happen?
+        if all the questions are clicked run the results code.
+
+
+
+        Right now I swap the tiles by using the swapQuestions() in the checkAnswers if all the answers has a value.
+        Also if the last question is true then when a div is clicked add the answer AND toggle the results btn.
+
+        I need to replaced that code there. I don't need to trigger it by the true value, I don't need the lastquestion.
+        on every question in the lasttile will have the function that will check if all the questions have values. No,
+        send the answers regularly, then have the switch statement check if the 
+        
+        Find out what's the questions length.
+        if it's 4 and it's the last tile =>...
+
+    you need a function and a trigger.
+
+    Change what triggers the results pop up. That's it. using the questions length and the answered questions to determine
+    if all the questions are answered to trigger the results.
+
+    So remove the results controller from the question to the question holder.
+
+    So I'm saying  if the questions.length is 1 ,2 ,3 , and default which is 4 do something for each.
+    The switch statement filters the question length first, then if all the questions have values then do this.
+
+
+    I need a trigger, what is the trigger I will be using? I can use the questions them selves with an onClick event.
+    on click, check if all available answers have values if they do then trigger the results btn, if not then do nothing.
+
+
+
+
+    */
 
 /*
     What's happing? the code only goes through a long delay when I have it in the system of "when all the 
@@ -181,10 +295,10 @@ const QuestionHolder = ({questions,testPosition,tilePosition,changeTestPosition,
                          count={count} 
                          questionCount={questionCount} 
                          key={i} 
-                         changeValue={changeValue} 
-                         lastquestion={questionCount === database2.length ? true:false}
-                         resultsBtnToggle={resultsBtnToggle}
-                         sendAnswers={sendAnswers}/>
+                         changeValue={changeValue}
+                         lastTile={lastTile}
+                        //  lastquestion={questionCount === database2.length ? true:false}
+                         checkAnswers={checkAnswers}/>
     })
 
 
