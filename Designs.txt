@@ -58,8 +58,15 @@ TO DOS:
 
             I need to conned it to the state, then make changes to the state.
         +I need to conditionally render the tiles to start the test along with the results.
-        -What is the style I am going with for the results?
-        -I need a starting tile and I want to show different images when the results are in.
+        +What is the style I am going with for the results?
+
+
+        +I need a starting tile and I want to show different images when the results are in.
+            +I need to add the default image to render when the test is active.
+            +I need to create a system that renders out the images results when the test is completed. 
+        +I need to style the results tile with the copy.
+        -I need to make it mobile frendly
+        -I need to upload it to git hub
 
 
 
@@ -102,3 +109,69 @@ When is it triggered?
 
 
 
+
+
+
+
+
+what's happening?
+Test start design isn't showing the results.
+Why?
+ Because the results show when the start of the test is false &&
+ if the results are in.
+
+But if I have the test to hide the entire thing, then you will never see
+the results.
+
+How to fix this?
+Create a new const that checks if the new page is true or not, if it is
+true, then when the button is clicked show the test cycle.
+
+
+
+
+Focus on what you can have now,not what you can't have now.
+The thing that you want is also looking for you too. Its' just 
+looking for a version of you that doesn't exist yet.
+
+God is setting up my life, how can I be prepared for it. Saturday
+isn't the goal, what's happening next week?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+what's the issues Im facing?
+
+How to display the images...
+which image is active?
+
+Create a switch statement within the get results
+that filters the response. if  it's a category name
+then make true whiles everything else is false.
+
+Create cons for the current states of the images.
+
+
+
+
+I would need a state that checkes if the image is active along with the corosponding css.
+
+
+
+
+On system at a time.
+multiple images:
+    each image has a state of active or inactive
+    when active images loads with css...I need to only change the css

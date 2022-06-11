@@ -16,6 +16,7 @@
     height: 85px;
     position: absolute;
     left: -10%;
+    top:0;
     /* border: 1px solid #ffffff; */
     box-shadow: 3px 2px 13px 0px #00000071;
     text-align: center;
@@ -65,3 +66,62 @@
     position: absolute;
     bottom: 4px;
 }
+
+
+
+
+
+
+
+
+
+.resultsContainer{
+    position: relative;
+    z-index: 100;
+    padding-top:90px;
+}
+
+.resultsContainer h3{
+    font-weight: 100;
+    font-size: 15px;
+    text-align: center;
+    /* margin: 50px 0 0 0; */
+    padding: 15px 0 0 0;
+}
+
+.woundTitle{
+    font-weight: 100;
+    font-size: 2.7em;
+    font-family: "Poppins Light";
+    text-align: center;
+    margin:  0;
+    padding: 0 0 0px 0;
+    text-transform: capitalize; 
+    line-height: 45px;
+
+    
+}
+
+.resultsContainer p{
+    padding: 20px 20px 0 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.resultsContainer button{
+    margin: 50px auto 30px auto;
+    font-size: 18px;
+    width: 200px;
+    padding: 8px 30px;
+    border-radius: 30px;
+    border: none;
+    display: block;
+    color: #ffffff;
+    background-color: #ae10ec;
+  }
+  
+  .resultsContainer button:hover{
+    cursor: pointer;
+    color: #ae10ec;
+    background-color: #ffffff;
+  }

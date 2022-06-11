@@ -18,8 +18,8 @@ import TileHardLight from "../images/hard-light.png"
 
 
 
-const Test = () => {
-    const[testStart, setTestStart] = useState(false)
+const Test = ({testStart,setTestStart,getResult}) => {
+    
 
     const [tilesCount, setTilesCount] = useState([]);
     const [testPosition, setTestPosition] = useState(0)
@@ -28,7 +28,8 @@ const Test = () => {
     const [answers, setAnswers] = useState([])
     const [testResults, setTestResults] = useState({
                                                     resultsIn: false,
-                                                    category: null,    
+                                                    category: null,
+                                                    copy:"null "   
                                                     })
     const categoryList =[{
                             category: "trust",
@@ -175,8 +176,10 @@ const Test = () => {
 
                await setTestResults({
                                     resultsIn: true,
-                                    category: "trust",    
+                                    category: "trust",
+                                    copy: "Trust issues are characterized by fear of betrayal, abandonment, or manipulation. And this fear is often triggered as a result of betrayal (such as infidelity), abandonment (think: leaving a child or foregoing a relationship with them), or manipulation (for example, dishonesty or gaslighting)."    
                                     })
+                await getResult("trust")
            }else{
                if (abandonment > rejection){
                    console.log(`Abandonment is the greatest with ${abandonment}`)
@@ -186,8 +189,10 @@ const Test = () => {
 
                    await setTestResults({
                                         resultsIn: true,
-                                        category: "abandonment",    
+                                        category: "abandonment", 
+                                        copy: "Abandonment issues happen when a parent or caregiver does not provide the child with consistent warm or attentive interactions, leaving them feeling chronic stress and fear. The experiences that happen during a child's development will often continue into adulthood."
                                         })
+                    await getResult("abandonment")
                    
                }else{
                    console.log(`Rejection is the greatest with ${rejection}`)
@@ -196,8 +201,10 @@ const Test = () => {
 
                    await setTestResults({
                                         resultsIn: true,
-                                        category: "rejection",    
+                                        category: "rejection",
+                                        copy:"Fear of or sensitivity to rejection that causes someone to pull away from others can lead to chronic feelings of loneliness and depression. While rejection sensitivity can co-occur with many mental health issues including social anxiety, avoidant personality, and borderline personality, it is not an official diagnosis."    
                                         })
+                    await getResult("rejection")               
 
                }
            }
@@ -209,9 +216,10 @@ const Test = () => {
 
                 await setTestResults({
                                         resultsIn: true,
-                                        category: "rejection",    
+                                        category: "rejection",
+                                        copy:"Fear of or sensitivity to rejection that causes someone to pull away from others can lead to chronic feelings of loneliness and depression. While rejection sensitivity can co-occur with many mental health issues including social anxiety, avoidant personality, and borderline personality, it is not an official diagnosis."    
                                         })
-
+                await getResult("rejection")
 
             }else{
                if(abandonment > rejection){
@@ -221,9 +229,11 @@ const Test = () => {
                    
 
                    await setTestResults({
-                    resultsIn: true,
-                    category: "abandonment",    
-                    })
+                                        resultsIn: true,
+                                        category: "abandonment", 
+                                        copy: "Abandonment issues happen when a parent or caregiver does not provide the child with consistent warm or attentive interactions, leaving them feeling chronic stress and fear. The experiences that happen during a child's development will often continue into adulthood."
+                                        })
+                    await getResult("abandonment")
                }
                else{
                    console.log(`Rejection is the greatest with ${rejection}`)
@@ -233,9 +243,11 @@ const Test = () => {
                    
 
                    await setTestResults({
-                    resultsIn: true,
-                    category: "rejection",    
-                    })
+                                        resultsIn: true,
+                                        category: "rejection",
+                                        copy:"Fear of or sensitivity to rejection that causes someone to pull away from others can lead to chronic feelings of loneliness and depression. While rejection sensitivity can co-occur with many mental health issues including social anxiety, avoidant personality, and borderline personality, it is not an official diagnosis."    
+                                        })
+                    await getResult("rejection")
                }
             }
            
@@ -243,8 +255,6 @@ const Test = () => {
 
         await setTestPosition(0);
         await setTestStart(false)
-        // await randomDatabase();
-        // await divideTiles()
             
     }
 
@@ -457,6 +467,7 @@ const Test = () => {
 
         await setTestStart(!testStart);
         await setAnswers([]);
+        await getResult(null)
 
         if(testStart){
             await randomDatabase()
@@ -466,7 +477,7 @@ const Test = () => {
                 category: null,    
                 })
         }
-        
+        console.log("I was clicked")
         
     }
 
@@ -495,7 +506,48 @@ const Test = () => {
 
     return(
             <div className="test-container">
-                 <button onClick={testToggle} style={{position:"fixed",
+                 
+
+                {testStart? <div>
+                    <div className="test-header-container">
+                        <h1>Personality Test</h1>
+                    </div>
+                    <div style={{zIndex:'5', position:'relative',height:"660px"}}>
+
+                        {tilesCount.length === 0? null:tilesRender}
+                    </div>
+                </div>: <div>
+                            <div className="test-header-container">
+                                    <h1>Personality Test</h1>
+                            </div>
+
+                            {testResults.resultsIn?<div className="resultsContainer" >
+
+                                <h3>Your dominate wounding is</h3>
+                                <h1 className="woundTitle">"{testResults.category} Issues"</h1>
+                                <p>{testResults.copy}</p>
+                                <button onClick={testToggle}>retake test</button>
+                            </div>:null}
+                           
+                        </div>}
+                
+                
+                <img className='tile-hard-light' src={TileHardLight} alt="lightBG" />
+                <div className="tile-hard-rim-light"></div>
+                <img className='tile-soft-lightBG' src={TileLightBG} alt="lightBG" />
+                {testStart?<div className="tile-progress-bar" style={{width:`${liveProgress}%`}}></div>:null}
+            </div>
+        )
+}
+
+export default Test;
+
+
+
+
+/*
+
+<button onClick={testToggle} style={{position:"fixed",
                                                         zIndex:"20",
                                                         left:"30%",
                                                         top:"0"}}>{testStart ? "End":"Start"} test</button>
@@ -531,36 +583,6 @@ const Test = () => {
                                     left:"30%",
                                     top:"100px"}}>Show test progress</button>
 
-                {testStart? <div>
-                    <div className="test-header-container">
-                        <h1>Personality Test</h1>
-                    </div>
-                    <div style={{zIndex:'5', position:'relative',height:"660px"}}>
-
-                        {tilesCount.length === 0? null:tilesRender}
-                    </div>
-                </div>: <div>
-                            {testResults.resultsIn?<div>
-                                <h1>{testResults.category}</h1>
-                            </div>:<h1>Start the test here</h1>}
-                           
-                        </div>}
-                
-                
-                <img className='tile-hard-light' src={TileHardLight} alt="lightBG" />
-                <div className="tile-hard-rim-light"></div>
-                <img className='tile-soft-lightBG' src={TileLightBG} alt="lightBG" />
-                {testStart?<div className="tile-progress-bar" style={{width:`${liveProgress}%`}}></div>:null}
-            </div>
-        )
-}
-
-export default Test;
-
-
-//
-
-/*
 
 if(categoryList.length === 0){
     //This adds a new category even tho there is none to add.
