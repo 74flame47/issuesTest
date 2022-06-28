@@ -510,7 +510,7 @@ const Test = ({testStart,setTestStart,getResult}) => {
 
                 {testStart? <div>
                     <div className="test-header-container">
-                        <h1>Personality Test</h1>
+                        <h1>Inner Wounds</h1>
                     </div>
                     <div style={{zIndex:'5', position:'relative',height:"660px"}}>
 

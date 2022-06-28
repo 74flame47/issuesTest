@@ -58,6 +58,7 @@
   font-size: 18px;
   width: 200px;
   padding: 8px 30px;
+  border: none;
   border-radius: 30px;
   display: block;
   color: #ffffff;
@@ -76,6 +77,59 @@
     animation-iteration-count: 1;
     animation-timing-function: ease-out;
 }
+
+
+
+
+
+.mainDisplayImg {
+  width: 70%;
+  position:absolute;
+  top:10%;
+  opacity:1;
+  left:-10%;
+  transform: scale(1);
+  z-index: 0;
+}
+
+.holderImg {
+  width: 70%;
+  position:absolute;
+  top:10%;
+  opacity:1;
+  left:-10%;
+  transform: scale(1);
+  z-index: 0;
+}
+
+
+
+.rejectionImg {
+  width:50vw;
+  position:fixed;
+  left:7%;
+  top:5%;
+
+}
+
+
+
+.trustImg{
+  position: fixed;
+  top: -20%;
+  left:-10%;
+  width:50vw;
+}
+
+.abandonmentImg{
+  position:fixed;
+  top: 5%;
+  height:90vh;
+  left:15%;
+}
+
+
+
 
 
 
@@ -180,12 +234,44 @@
 
 
 
+.mainDisplayImg {
+  width: 100%;
+  left:0;
+}
+
+
+.holderImg {
+  width: 80%;
+  left:10%;
+  top: -1%;
+}
+
+
+.rejectionImg {
+  width:77vw;
+}
+
+
+
+.trustImg{
+  position: relative;
+  width:60vw;
+}
+
+.abandonmentImg{
+  position:relative;
+  height:55vh;
+}
 
 
 
 
 
-
+.intro-container{
+  width: 100%;
+  margin: 30vh 0 0 0;
+  /* border: 3px solid #ffffff; */
+}
 
 
 

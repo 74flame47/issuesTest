@@ -109,43 +109,25 @@ const startTest = () => {
   return (<div id="windowContainer">
             <div className="center-container">
               <div className="left-container">
-                <img src={Main} style={newTest? MainInActive:MainActive} alt="main"/> 
-                {result === null &&  testStart === true? <img src={Default} style={{
-                                                          width:'70%',
-                                                          position: 'absolute',
-                                                          top: '10%',
-                                                          opacity: '1',
-                                                          left:'-10%',
-                                                          transform: 'scale(1)',
-                                                          zIndex: '0'
-                                                        }} alt="main"/>:null} 
-                <img src={Rejection} style={isRejection?{width:'50vw',
-                                            position:'fixed',
-                                            left:'7%',
-                                            top:'5%'}:{width:'50vw',
-                                                        position:'fixed',
-                                                        left:'7%',
-                                                        top:'5%',
-                                                        display:'none'}}
-                                      alt="main"/> 
-                 <img src={Trust} style={isTrust?{position:'fixed',
-                                                  top: '-20%',
-                                                  left:'-10%',
-                                                  width:'50vw'}:{position:'fixed',
-                                                                  top: '-20%',
-                                                                  left:'-10%',
-                                                                  width:'50vw',
-                                                                display:'none'}}
-                                  alt="main"/> 
-                <img src={Abandonment} style={isAbandonment?{position:'fixed',
-                                                                  top: '5%',
-                                                                  height:'90vh',
-                                                                  left:'15%'}:{position:'fixed',
-                                                                                top: '5%',
-                                                                                height:'90vh',
-                                                                                left:'15%',
-                                                                                display:'none'}}
-                                            alt="main"/>  
+                <img src={Main}
+                     className="mainDisplayImg"
+                     style={newTest? {display:'none'}: {display:"block"}}
+                     alt="main"/> 
+
+                {result === null && testStart === true? <img src={Default} className='holderImg' alt="main"/>:null}
+                <img src={Rejection}
+                     className="rejectionImg"
+                     style={isRejection? {display:"block"}:{display:'none'}}
+                     alt="main"/> 
+
+                <img src={Trust}
+                     className="trustImg"
+                     style={isTrust?  {display:"block"}:{display:'none'}}
+                     alt="main"/> 
+                <img src={Abandonment} 
+                      className="abandonmentImg"
+                      style={isAbandonment? {display:"block"}:{display:'none'}}
+                      alt="main"/>  
               </div>
               <div className="right-container">
 
@@ -162,21 +144,12 @@ const startTest = () => {
               
                
                {/* <button style={{position:'fixed', top:'0'}} onClick={()=>{console.log(result)}}>Show result</button> */}
-               
+              
               </div>
             </div>
-            
+          
           </div>
   );
 }
 
 export default DisplayFrame;
-
-
-
-//<ContentContainer style={{position: 'absolute'}}/>
-//
-/*
-        {newTest?<Test testStart={testStart} setTestStart={setTestStart}/>:null}
-        
-*/
