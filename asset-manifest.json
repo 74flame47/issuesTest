@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/issuesTest/static/css/main.43c81271.css",
+    "main.js": "/issuesTest/static/js/main.bd9274b1.js",
+    "static/media/main.png": "/issuesTest/static/media/main.b3f319cacdc6d0056813.png",
+    "static/media/default.png": "/issuesTest/static/media/default.c69cd07c896e88b4ea8c.png",
+    "static/media/abandonment.png": "/issuesTest/static/media/abandonment.6556a8a6b6def600e03a.png",
+    "static/media/rejection.png": "/issuesTest/static/media/rejection.6f97b8bf0c5102a7da5f.png",
+    "static/media/trust.png": "/issuesTest/static/media/trust.46c12b5b56af1414b5f4.png",
+    "static/media/Poppins-Thin.ttf": "/issuesTest/static/media/Poppins-Thin.a61eaf4c2e4d44d6db6a.ttf",
+    "static/media/Poppins-Light.ttf": "/issuesTest/static/media/Poppins-Light.f41b63c0bb0963ace821.ttf",
+    "static/media/Poppins-Regular.ttf": "/issuesTest/static/media/Poppins-Regular.8081832fc5cfbf634aa6.ttf",
+    "static/media/Poppins-Bold.ttf": "/issuesTest/static/media/Poppins-Bold.404e299be26d78e66794.ttf",
+    "static/media/title.png": "/issuesTest/static/media/title.31efa4cb8838415d52cb.png",
+    "static/media/light-effect-tileBG.png": "/issuesTest/static/media/light-effect-tileBG.552e12a7a5ad40522261.png",
+    "index.html": "/issuesTest/index.html",
+    "main.43c81271.css.map": "/issuesTest/static/css/main.43c81271.css.map",
+    "main.bd9274b1.js.map": "/issuesTest/static/js/main.bd9274b1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.43c81271.css",
+    "static/js/main.bd9274b1.js"
+  ]
+}
